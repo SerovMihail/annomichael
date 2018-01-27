@@ -18,7 +18,7 @@ $(function () {
         var yyyy = date.getFullYear();
 
         var isLeap = IsLeapYear(yyyy);
-        var dayInMonthAndAlias = getDaysInMonth(isLeap, dd * mm);
+        var dayInMonthAndAlias = getDaysInMonthAndAlias(isLeap, dd * mm);
         var dayInMonth = dayInMonthAndAlias[0],
             alias = dayInMonthAndAlias[1];
 
