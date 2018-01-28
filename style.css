@@ -18,7 +18,7 @@ html, body {
 .inline-flex {
     display: inline-flex;
     align-items: center;
-    padding-left: 40px;
+    padding-left: 14vw;
 }
 
 .date  {
@@ -30,7 +30,7 @@ html, body {
 }
 
 .yearLetters {
-    padding-left: 10px;
+    padding-left: 2vw;
 }
 
 .alias {
