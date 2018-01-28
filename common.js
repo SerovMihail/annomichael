@@ -7,22 +7,109 @@ $(function () {
     //     $(".calendar").attr("value", yearAndMonth);
     // }    
 
+    
+
+    var zeroDate = getZeroDate(),
+        newDate = new Date(),
+        MichaelAges = getLifeMilliseconds(new Date(
+            family[0].born.year, 
+            family[0].born.month - 1, 
+            family[0].born.day), newDate),
+        dayInYearWithoutMichael = 349,
+        totalPercentOfAges = 0,
+        totalRoundDays = 0;
+      
+    var date = new Date(zeroDate + MichaelAges.getTime());
+    var yyyy = date.getFullYear();
+
+    function getAges() {
+        family.forEach(function (val) {
+            var millisecondsOfLife = getLifeMilliseconds(new Date(
+                val.born.year, 
+                val.born.month - 1, 
+                val.born.day), newDate);            
+            
+            var date = new Date(zeroDate + millisecondsOfLife.getTime());
+
+            val.age = date.getFullYear();
+
+            if(val.name != 'Michael') {
+                val.percentOfMichaelAges = val.age / family[0].age;      
+                totalPercentOfAges += val.percentOfMichaelAges;       
+            }
+        });
+    }
+
+    function daysWithAndWithoutPrecision() {
+        family.forEach(function (val) {             
+
+            if(val.name == 'Michael') {
+
+                val.daysWithoutPrecision = IsLeapYear(yyyy) ? 16 : 17;
+                val.daysWithPrecision =  val.daysWithoutPrecision;
+
+            } else {
+
+                val.daysWithPrecision = dayInYearWithoutMichael / totalPercentOfAges * val.percentOfMichaelAges;
+
+                if (val.name != 'Elia') {
+                    val.daysWithoutPrecision = Math.round(val.daysWithPrecision);
+                    totalRoundDays += val.daysWithoutPrecision;                    
+                }                 
+            }
+            
+        });
+
+        family[1].daysWithoutPrecision = dayInYearWithoutMichael - totalRoundDays;
+    }
+
+    getAges();
+    daysWithAndWithoutPrecision();
+
+    var totalDays = family.reduce(add, 0);
+
+    function add(a, b) {
+        if(a == 0)
+            return b.daysWithoutPrecision;
+
+        return a + b.daysWithoutPrecision;
+    }
+
+
     function updateTimer() { 
-        var millisecondsOfLife = getLifeMilliseconds(new Date(1938, 1, 13), new Date());
+        var millisecondsOfLife = getLifeMilliseconds(new Date(1938, 1, 13), new Date()); 
+        var millisecondsOfLifeFromYearStart = getLifeMilliseconds(new Date(1938, 1, 13), new Date(2017, 1, 13)); 
+
         var zeroDate = getZeroDate();
         
         var date = new Date(zeroDate + millisecondsOfLife.getTime());
+        var dateFromYearStart = new Date(zeroDate + millisecondsOfLifeFromYearStart.getTime());
+
+        var ss = date - dateFromYearStart;
+
+        var oneDay = 1000 * 60 * 60 * 24;
+        var ddddday = Math.floor(ss / oneDay);
 
         var dd = date.getDate();
         var mm = date.getMonth() + 1; //January is 0!
         var yyyy = date.getFullYear();
 
         var isLeap = IsLeapYear(yyyy);
-        var dayInMonthAndAlias = getDaysInMonthAndAlias(isLeap, dd * mm);
-        var dayInMonth = dayInMonthAndAlias[0],
-            alias = dayInMonthAndAlias[1];
 
-        var dayMonthYear =   yyyy + ' ' + mm  + ' '+ dayInMonth ;
+        
+        var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(ddddday, yyyy);
+        var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
+            alias = dayInMonthAndAliasAndMonthIndex[1],
+            monthIndex = dayInMonthAndAliasAndMonthIndex[2];
+
+        var dayInMonthString = dayInMonth.toString()
+        while(dayInMonthString.length < 3){
+            dayInMonthString='0'+dayInMonthString;
+        }
+            
+            
+
+        var dayMonthYear =   yyyy + ' ' + monthIndex  + ' '+ dayInMonthString ;
 
         var time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][date.getDay()];
         document.getElementsByClassName('time')[0].innerHTML = time;
@@ -30,7 +117,7 @@ $(function () {
         document.getElementsByClassName('date')[0].innerHTML = dayMonthYear;
         document.getElementsByClassName('alias')[0].innerHTML = alias;
 
-        setCalendarStartYear(yyyy, mm);
+        //setCalendarStartYear(yyyy, mm);
     }
 
     /**
@@ -71,37 +158,30 @@ $(function () {
         return false; 
     };
 
-    function getDaysInMonthAndAlias(isLeap, currentDay) {
-        
-        var MichaelDays = isLeap ? 17 : 16;
-        var EliaDays = 105,
-            SergiusDays = 99,
-            EgorDays = 48,
-            VanDays = 48,
-            LexiusDays = 31,
-            CatharinaDays = 18;
+    function getDaysInMonthAndAliasAndMonthIndex(currentDay, year) {
             
-        var ME = MichaelDays + EliaDays,
-            MES = MichaelDays + EliaDays + SergiusDays,
-            MESE = MichaelDays + EliaDays + SergiusDays + EgorDays,
-            MESEV = MichaelDays + EliaDays + SergiusDays + EgorDays + VanDays,
-            MESEVL =  MichaelDays + EliaDays + SergiusDays + EgorDays + VanDays + LexiusDays,
-            MESEVLC =  MichaelDays + EliaDays + SergiusDays + EgorDays + VanDays + LexiusDays + CatharinaDays;
+        var M = family[0].daysWithoutPrecision,
+            ME = M + family[1].daysWithoutPrecision,
+            MES = ME + family[2].daysWithoutPrecision,
+            MESE = MES + family[3].daysWithoutPrecision,
+            MESEV = MESE + family[4].daysWithoutPrecision,
+            MESEVL =  MESEV + family[5].daysWithoutPrecision,
+            MESEVLC =  MESEVL + family[5].daysWithoutPrecision;
 
-        if(currentDay > 0 && currentDay <= MichaelDays) {
-            return [MichaelDays , 'Michael'];
-        } else if (currentDay > MichaelDays && currentDay <= ME) {
-            return [EliaDays , 'Elia'];
+        if(currentDay > 0 && currentDay <= M) {
+            return [family[0].daysWithoutPrecision , 'Michael', 1];
+        } else if (currentDay > M && currentDay <= ME) {
+            return [family[1].daysWithoutPrecision , 'Elia', 2];
         } else if (currentDay > ME && currentDay <= MES) {
-            return [SergiusDays , 'Sergius'];
+            return [family[2].daysWithoutPrecision , 'Sergius', 3];
         } else if (currentDay > MES && currentDay <= MESE) {
-            return [EgorDays , 'Egor'];
+            return [family[3].daysWithoutPrecision , 'Egor', 4];
         } else if (currentDay > MESE && currentDay <= MESEV) {
-            return [VanDays , 'Van'];
+            return [family[4].daysWithoutPrecision , 'Van', 5];
         } else if (currentDay > MESEV && currentDay <= MESEVL) {
-            return [LexiusDays , 'Lexius'];
+            return [family[5].daysWithoutPrecision , 'Lexius', 6];
         } else if (currentDay > MESEVL && currentDay <= MESEVLC) {
-            return [CatharinaDays , 'Catharina'];
+            return [family[6].daysWithoutPrecision , 'Catharina', 7];
         } else {
             console.log('Mistake in algorithm');
         }

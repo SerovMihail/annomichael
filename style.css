@@ -3,7 +3,7 @@ html, body {
     margin: 0;
     box-sizing: border-box;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    color: #212529;
+    color: #212529;    
 }
 
 .container {
@@ -12,20 +12,21 @@ html, body {
     align-items: center;     /*Центрирование по вертикали */
     flex-direction: column;
     height: 100%;    
-    margin: 0 auto;
+    margin: 0 auto;    
 }
 
 .inline-flex {
     display: inline-flex;
     align-items: center;
+    padding-left: 40px;
 }
 
 .date  {
-    font-size: 30px;
+    font-size: 10vw;
 }
 
 .yearLetters, .time {
-    font-size: 16px;
+    font-size: 6vw;
 }
 
 .yearLetters {
@@ -33,5 +34,5 @@ html, body {
 }
 
 .alias {
-    font-size: 12px;
+    font-size: 4vw;
 }
