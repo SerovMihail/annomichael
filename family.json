@@ -7,7 +7,7 @@ family = [
             "year": 1938
         }, 
         "age": null,
-        "percentOfMichaelages": 1,
+        "percentOfMichaelAges": 1,
         "daysWithPrecision": null,
         "daysWithoutPrecision": null
     },
@@ -19,7 +19,7 @@ family = [
             "year": 1970
         },
         "age": null,
-        "percentOfMichaelages": null,
+        "percentOfMichaelAges": null,
         "daysWithPrecision": null,
         "daysWithoutPrecision": null
     },
@@ -31,7 +31,7 @@ family = [
             "year": 1973
         },
         "age": null,
-        "percentOfMichaelages": null,
+        "percentOfMichaelAges": null,
         "daysWithPrecision": null,
         "daysWithoutPrecision": null
     },
@@ -43,7 +43,7 @@ family = [
             "year": 1996
         },
         "age": null,
-        "percentOfMichaelages": null,
+        "percentOfMichaelAges": null,
         "daysWithPrecision": null,
         "daysWithoutPrecision": null
     },
@@ -55,7 +55,7 @@ family = [
             "year": 1996
         },
         "age": null,
-        "percentOfMichaelages": null,
+        "percentOfMichaelAges": null,
         "daysWithPrecision": null,
         "daysWithoutPrecision": null
     },
@@ -67,7 +67,7 @@ family = [
             "year": 2004
         },
         "age": null,
-        "percentOfMichaelages": null,
+        "percentOfMichaelAges": null,
         "daysWithPrecision": null,
         "daysWithoutPrecision": null
     },
@@ -79,7 +79,7 @@ family = [
             "year": 2010
         },
         "age": null,
-        "percentOfMichaelages": null,
+        "percentOfMichaelAges": null,
         "daysWithPrecision": null,
         "daysWithoutPrecision": null
     }

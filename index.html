@@ -4,27 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Anno Michael</title>
+    
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
-    <main class="container">   
-       
-        <div class="inline-flex">
-            <div class="date"></div>
-            <div class="yearLetters"></div>
-        </div>
-        
-        <div class="time"></div>
-        <div class="alias"></div>
-                 
-    </main>
 
-    <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
+        <div id="hellopreloader"><div id="hellopreloader_preload"></div><p><a href="http://hello-site.ru">Hello-Site.ru. Бесплатный конструктор сайтов.</a></p></div>
+
+    <div id="fullpage">
+        <div class="section">
+                <main class="container">          
+                        <div class="inline-flex">
+                            <div class="date"></div>
+                            <div class="yearLetters"></div>
+                        </div>                        
+                        <div class="time"></div>
+                        <div class="alias"></div>                                 
+                    </main>
+        </div>
+        <div class="section">
+            <div class="calendar">
+                Тут буит колендарь
+            </div>
+        </div>        
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script>
     <script type="text/javascript" src="family.json"></script>
-    <script src="common.js"></script>
+    <script src="time.js"></script>   
+    <script src="common.js"></script>  
+    <script  src='preloader.js'></script>
 </body>
 </html>  
