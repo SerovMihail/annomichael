@@ -114,9 +114,7 @@ html, body {
         width: 28vw;
     }
 
-    .free-month {
-
-        margin-bottom: 50px;
+    .free-month {        
 
         table {
 
@@ -129,6 +127,9 @@ html, body {
     }
 
     .four-month {
+
+        margin-bottom: 10px;
+
         table {
 
             width: 21vw;
@@ -185,18 +186,14 @@ html, body {
         width: 7.9vw !important;
     }
 
-    .free-month {
-        margin-bottom: 10px !important;
-    }
-
-   
+       
 }
 
 @media (max-width:768px) {
     table {
         width: 61vw !important;
     }
-    
+
 }
 
 @media (max-width:425px) {

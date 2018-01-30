@@ -80,7 +80,8 @@ $(function () {
 
         var yeear = data.newDate.getMonth() >= 1 && data.newDate.getDate() >= 13 ? data.newDate.getFullYear() : data.newDate.getFullYear() - 1;
 
-        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date(yeear, 1, 13)); 
+        var startOfCurrentYEar = new Date(yeear, 1, 13);
+        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), startOfCurrentYEar); 
         
         var date = new Date(data.zeroDate + millisecondsOfLife.getTime());
         var dateFromYearStart = new Date(data.zeroDate + millisecondsOfLifeFromYearStart.getTime());
@@ -100,7 +101,7 @@ $(function () {
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
 
         if(!calendarReady) {
-            calendar.drawCalendar(ddddday + 1, monthIndex, date.getDay());
+            calendar.drawCalendar(ddddday + 1, monthIndex, startOfCurrentYEar.getDay());
             calendarReady = true;
         }        
 
