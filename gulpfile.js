@@ -10,7 +10,7 @@ function onError(err) {
 }
 
 gulp.task('sass', function(){
-    return gulp.src('style.scss')
+    return gulp.src('*.scss')
     .pipe(sass())
     .pipe(prefix('last 2 versions'))
     .pipe(minify())
@@ -21,7 +21,7 @@ gulp.task('sass', function(){
 }); 
 
 gulp.task('watcher',function(){
-    gulp.watch('style.scss', ['sass']);
+    gulp.watch('*.scss', ['sass']);
 });
 
 gulp.task('default', ['watcher']);

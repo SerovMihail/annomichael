@@ -1,4 +1,7 @@
+@import "colors.scss";
+
 html, body {
+
     height: 100%;
     margin: 0;
     box-sizing: border-box;
@@ -7,8 +10,8 @@ html, body {
 
     .text-center {
         text-align: center
-    }
-    
+    }   
+
     .container {
         display: flex;
         justify-content: center; 
@@ -57,41 +60,37 @@ html, body {
         border-collapse: collapse;
         font-family: Tahoma,Geneva,sans-serif;
         margin: 20px 5px;
-        box-shadow: 0px 0px 2px rgba(0,0,0,0.4);
         border-radius: 4px;
-    }
 
-    thead {
-        display: block;
-        margin: 4px 4px 0px 4px; 
+        thead {
+            display: block;
+            margin: 4px 4px 0px 4px; 
+    
+            .calendar-month-title {
+                font-weight: bold;
+                width: 100% !important;
+            }
+        }
 
-        .calendar-month-title {
-            font-weight: bold;
-            width: 100% !important;
+        tbody {
+            display: block;
+            margin: 0px 4px 4px 4px;
+        }
+
+        td,th{
+            display: inline-block;
+            float: left;
+            height: 36px;           
+            margin: 1px 0.17vw;
+            line-height: 36px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: lighter;
+            cursor: default;
+            transition: color 0.1s,background-color 0.2s;
+            border-radius: 18px;
         }
     }
-
-    tbody {
-        display: block;
-        margin: 0px 4px 4px 4px;
-    }
-
-    td,th{
-        display: inline-block;
-        float: left;
-        height: 36px;
-        /* width: 3.4vw; */
-        margin: 1px 0.17vw;
-        line-height: 36px;
-        text-align: center;
-        font-size: 12px;
-        font-weight: lighter;
-        cursor: default;
-        transition: color 0.1s,background-color 0.2s;
-        border-radius: 18px;
-    }
-
-    
 
     .free-month, .four-month {
 
@@ -107,17 +106,8 @@ html, body {
 
         -webkit-flex-direction: row; /* Safari */
         flex-direction:         row;
-    }
-
-    .free-month > table {
-
-        width: 28vw;
-    }
-
-    .free-month {        
 
         table {
-
             width: 28vw;
 
             td, th {
@@ -148,16 +138,14 @@ html, body {
     }
 
     .calendar-day {
-    padding: 5px;
+        padding: 5px;
     }
 
     .today {
-        background-color: red;
+        background-color: rgba(255, 0, 0, 0.8);
     }
 
-    .birthday {
-        background-color: yellow;
-    }
+    
 }
 
 
@@ -170,16 +158,13 @@ html, body {
 
 @media (max-width:1280px){
     
-    .free-month, .four-month {
-        
-          
-        -webkit-flex-direction: column !important; /* Safari */
+    .free-month, .four-month {        
         flex-direction:         column !important;
     }
 
     table {
         margin: 10px auto !important;
-        width: 60% !important;
+        width: 61vw !important;
     }
 
     th, td {
@@ -191,25 +176,25 @@ html, body {
 
 @media (max-width:768px) {
     table {
-        width: 61vw !important;
+        width: 63vw !important;
     }
 
 }
 
 @media (max-width:425px) {
     table {
-        width: 63vw !important;
+        width: 64vw !important;
     }
 }
 
 @media (max-width:375px) {
     table {
-        width: 64vw !important;
+        width: 65vw !important;
     }
 }
 
 @media (max-width:320px) {
     table {
-        width: 65vw !important;
+        width: 67vw !important;
     }
 }

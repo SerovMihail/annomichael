@@ -35,9 +35,19 @@ var calendar = (function() {
                 }
 
                 if(index + 1 == todayMonth && dayOfYear == todayDay) {
-                    days += "<td class='today'>" + i + "</td>";
+                    days += "<td class='today' title='Сегодня'>" + i + "</td>";
                 } else if ( birthdays.indexOf( dayOfYear - 1 ) != -1) {
-                    days += "<td class='birthday'>" + i + "</td>";
+                    var birthdayPerson = family.find(function (val) { 
+
+                        if(currentYearIsLeap) {
+                            return val.daysFromYearStartLeapYear == dayOfYear - 1;                                
+                        } else {
+                            return val.daysFromYearStart == dayOfYear - 1;           
+                        }
+
+                    });
+
+                    days += "<td class='" + birthdayPerson.name + "-color-bg' title=" + birthdayPerson.name + ">" + i + "</td>";
                 } else {
                     days += "<td>" + i + "</td>";
                 }               
@@ -52,7 +62,7 @@ var calendar = (function() {
             var tbody = "<tbody>" + weeks + "</tbody>"
 
             var dayOfWeeks = "<tr><th>ПН</th><th>ВТ</th><th>СР</th><th>ЧТ</th><th>ПТ</th><th>СБ</th><th>ВС</th></tr>";
-            var monthTitle = "<tr><th colspan='7' class='calendar-month-title'>" + item.name +"</th></tr>"
+            var monthTitle = "<tr><th colspan='7' class='calendar-month-title " + item.name + "-color'>" + item.name +"</th></tr>"
 
             var thead = "<thead>" + monthTitle + dayOfWeeks + "</thead>";
             var table = "<table>" + thead + tbody  + "</table>";
