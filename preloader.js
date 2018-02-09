@@ -1,11 +1,13 @@
-var hellopreloader = document.getElementsByClassName("loader-container")[0];
-var preloader = document.getElementsByClassName("loader")[0];
+var preloader = document.getElementsByClassName("mk-spinner-wrap")[0];
+
 
 function fadeOutnojquery(el) {
     el.style.opacity = 1;
+    
     var interhellopreloader = setInterval(
         function () {
             el.style.opacity = el.style.opacity - 0.05;
+            
             if (el.style.opacity <= 0.05) {
                 clearInterval(interhellopreloader);
                 preloader.style.display = "none";
@@ -14,8 +16,9 @@ function fadeOutnojquery(el) {
 }
 window.onload = function () {
     setTimeout(function () {
-        fadeOutnojquery(hellopreloader);
+        fadeOutnojquery(preloader);
     }, 1000);
 
     
 };
+
