@@ -47,7 +47,7 @@ var calendar = (function() {
 
                     });
 
-                    days += "<td class='" + birthdayPerson.name + "-color-bg' title=" + birthdayPerson.name + ">" + i + "</td>";
+                    days += "<td class='" + birthdayPerson.name + "-color-bg' title='День рождения " + birthdayPerson.name + "'>" + i + "</td>";
                 } else {
                     days += "<td>" + i + "</td>";
                 }               
