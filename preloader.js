@@ -1,6 +1,5 @@
 var preloader = document.getElementsByClassName("mk-spinner-wrap")[0];
 
-
 function fadeOutnojquery(el) {
     el.style.opacity = 1;
     
@@ -21,4 +20,3 @@ window.onload = function () {
 
     
 };
-

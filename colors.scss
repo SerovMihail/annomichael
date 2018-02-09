@@ -1,25 +1,21 @@
 $Michael_color: rgb(180, 0, 0);
-$Michael_color_bg: rgba(180, 0, 0, 0.2);
+//$Michael_color_bg: rgba(180, 0, 0, 0.2);
 $Egor_color: rgb(1, 105, 142);
-$Egor_color_bg: rgba(1, 105, 142, 0.2);
+//$Egor_color_bg: rgba(1, 105, 142, 0.2);
 $Sergius_color: rgb(255, 145, 57);
-$Sergius_color_bg: rgba(255, 145, 57, 0.2);
+//$Sergius_color_bg: rgba(255, 145, 57, 0.2);
 $Elia_color: rgb(25, 88, 27);
-$Elia_color_bg: rgba(25, 88, 27, 0.2);
+//$Elia_color_bg: rgba(25, 88, 27, 0.2);
 $Van_color: rgb(137, 28, 91);
-$Van_color_bg: rgba(137, 28, 91, 0.2);
+//$Van_color_bg: rgba(137, 28, 91, 0.2);
 $Lexius_color: rgb(13, 14, 64);
-$Lexius_color_bg: rgba(13, 14, 64, 0.2);
+//$Lexius_color_bg: rgba(13, 14, 64, 0.2);
 $Catharina_color: rgb(170, 0, 51);
-$Catharina_color_bg: rgba(170, 0, 51, 0.2);
+//$Catharina_color_bg: rgba(170, 0, 51, 0.2);
 
 .Michael-color {
     color: $Michael_color;
     font-weight: 900;
-}
-
-.Michael-color-bg {
-    background: $Michael_color_bg;
 }
 
 .Egor-color {
@@ -27,17 +23,9 @@ $Catharina_color_bg: rgba(170, 0, 51, 0.2);
     font-weight: 900;
 }
 
-.Egor-color-bg {
-    background: $Egor_color_bg;
-}
-
 .Sergius-color {
     color: $Sergius_color;
     font-weight: 900;
-}
-
-.Sergius-color-bg {
-    background: $Sergius_color_bg;
 }
 
 .Elia-color {
@@ -45,17 +33,9 @@ $Catharina_color_bg: rgba(170, 0, 51, 0.2);
     font-weight: 900;
 }
 
-.Elia-color-bg {
-    background: $Elia_color_bg;
-}
-
 .Van-color {
     color: $Van_color;
     font-weight: 900;
-}
-
-.Van-color-bg {
-    background: $Van_color_bg;
 }
 
 .Lexius-color {
@@ -63,16 +43,37 @@ $Catharina_color_bg: rgba(170, 0, 51, 0.2);
     font-weight: 900;
 }
 
-.Lexius-color-bg {
-    background: $Lexius_color_bg;
-}
-
 .Catharina-color {
     color: $Catharina_color;
     font-weight: 900;
 }
 
-.Catharina-color-bg {
-    background: $Catharina_color_bg;
-}
+/* background color reserved */
 
+// .Catharina-color-bg {
+//     background: $Catharina_color_bg;
+// }
+
+// .Michael-color-bg {
+//     background: $Michael_color_bg;
+// }
+
+// .Lexius-color-bg {
+//     background: $Lexius_color_bg;
+// }
+
+// .Van-color-bg {
+//     background: $Van_color_bg;
+// }
+
+// .Elia-color-bg {
+//     background: $Elia_color_bg;
+// }
+
+// .Sergius-color-bg {
+//     background: $Sergius_color_bg;
+// }
+
+// .Egor-color-bg {
+//     background: $Egor_color_bg;
+// }
