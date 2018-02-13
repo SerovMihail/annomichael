@@ -27,20 +27,20 @@ html, body {
 .inline-flex {
     display: inline-flex;
     align-items: center;
-    padding-left: 14vw;
-    height: 7vw;
+    padding-left: 11vw;
+    height: 5.5vw;
 }
 
 .date  {
-    font-size: 10vw;
+    font-size: 7vw;
 }
 
 .yearLetters, .time {
-    font-size: 6vw;
+    font-size: 4vw;
 }
 
 .time {
-    height: 7vw;
+    height: 4.5vw;
 }
 
 .yearLetters {
@@ -48,7 +48,7 @@ html, body {
 }
 
 .alias {
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 /* calendar styles */ 
