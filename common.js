@@ -19,7 +19,7 @@ $(function () {
         
         dayInYearWithoutMichael : 349,
         totalPercentOfAges : 0,
-        totalRoundDays : 0
+        totalRoundDays : 0       
     };
 
     var date = new Date(data.zeroDate + data.MichaelAges.getTime());
@@ -73,7 +73,7 @@ $(function () {
         family[1].daysWithoutPrecision = data.dayInYearWithoutMichael - data.totalRoundDays;
     }     
     
-
+    var calendarReady = false;
 
     function updateTimer() { 
         var millisecondsOfLife = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date()); 
@@ -98,6 +98,11 @@ $(function () {
         var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
             alias = dayInMonthAndAliasAndMonthIndex[1],
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
+
+        if(!calendarReady) {
+            calendar.drawCalendar(ddddday + 1, monthIndex);
+            calendarReady = true;
+        }        
 
         var dayInMonthString = dayInMonth.toString()
         while(dayInMonthString.length < 3){
@@ -152,7 +157,9 @@ $(function () {
 
     fillFamilyData();
 
-    calendar.drawCalendar();
+   
+
+    
 
 
     /** test */

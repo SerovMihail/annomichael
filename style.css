@@ -76,7 +76,11 @@ html, body {
 }
 
 .calendar-day {
-    margin: 10px;
+   padding: 5px;
+}
+
+.today {
+    background-color: red;
 }
 
 /* preloader */
