@@ -78,7 +78,7 @@ $(function () {
     function updateTimer() { 
         var millisecondsOfLife = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date()); 
 
-        var yeear = data.newDate.getMonth() >= 1 && data.newDate.getDay() >= 1 ? data.newDate.getFullYear() : data.newDate.getFullYear() - 1;
+        var yeear = data.newDate.getMonth() >= 1 && data.newDate.getDate() >= 13 ? data.newDate.getFullYear() : data.newDate.getFullYear() - 1;
 
         var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date(yeear, 1, 13));         
         
@@ -93,9 +93,6 @@ $(function () {
         var dd = date.getDate();
         var mm = date.getMonth() + 1; //January is 0!
         var yyyy = date.getFullYear();
-
-        //var isLeap = _.IsLeapYear(yyyy);
-
         
         var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(ddddday + 1, yyyy);
         var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
@@ -106,7 +103,6 @@ $(function () {
         while(dayInMonthString.length < 3){
             dayInMonthString='0'+dayInMonthString;
         }
-          
 
         var dayMonthYear =   yyyy + ' ' + monthIndex  + ' '+ dayInMonthString ;
 
