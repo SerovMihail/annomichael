@@ -1,6 +1,6 @@
 var calendar = (function() {
 
-    function drawCalendar(todayDay, todayMonth) {
+    function drawCalendar(todayDay, todayMonth, startDayOfWeek) {
 
         var freeMonth =  $('.free-month');
         var fourMonth =  $('.four-month');
@@ -10,25 +10,43 @@ var calendar = (function() {
         family.forEach(function(item, index) {
 
             appendDiv = index > 2 ? fourMonth : freeMonth;
+           
 
-            var title = "<h1 class='calendar-title text-center'>" + item.name + "</h1>";
+            var weeks = "";
+            var days = "";
 
-            var monthBody = "";
+            for (var f = 1; f < startDayOfWeek; f++) {
+                days += "<td></td>";                
+            }            
+
             for(var i = 1; i < item.daysWithoutPrecision + 1; i++ ) {
 
-                if(index + 1 == todayMonth && dayOfYear == todayDay) {
-                    monthBody += "<div class='calendar-day today'>" + i + "</div>";
-                } else {
-                    monthBody += "<div class='calendar-day'>" + i + "</div>";
-                }
                 
+                if(startDayOfWeek > 7) {
+                    startDayOfWeek = 1;
+                    weeks += "<tr>" + days + "</tr>"
+                    days = "";
+                }
 
+                if(index + 1 == todayMonth && dayOfYear == todayDay) {
+                    days += "<td class='today'>" + i + "</td>";
+                } else {
+                    days += "<td>" + i + "</td>";
+                }               
+                
+                startDayOfWeek++;
                 dayOfYear++;
             }
 
-            var month = "<div>"+ title +  "<div class='calendar-month'>" + monthBody + "</div></div>";
+            var tbody = "<tbody>" + weeks + "</tbody>"
 
-            appendDiv.append(month);
+            var dayOfWeeks = "<tr><th>ПН</th><th>ВТ</th><th>СР</th><th>ЧТ</th><th>ПТ</th><th>СБ</th><th>ВСК</th></tr>";
+            var monthTitle = "<tr><th colspan='7' class='calendar-month-title'>" + item.name +"</th></tr>"
+
+            var thead = "<thead>" + monthTitle + dayOfWeeks + "</thead>";
+            var table = "<table>" + thead + tbody  + "</table>";
+
+            appendDiv.append(table);
         });
     }
 

@@ -100,7 +100,7 @@ $(function () {
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
 
         if(!calendarReady) {
-            calendar.drawCalendar(ddddday + 1, monthIndex);
+            calendar.drawCalendar(ddddday + 1, monthIndex, date.getDay());
             calendarReady = true;
         }        
 
