@@ -15,6 +15,15 @@ html, body {
     margin: 0 auto;    
 }
 
+.section {
+    width: 90% !important;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center
+}
+
 .inline-flex {
     display: inline-flex;
     align-items: center;
@@ -40,6 +49,34 @@ html, body {
 
 .alias {
     font-size: 4vw;
+}
+
+/* calendar styles */ 
+
+.free-month, .four-month {
+
+    align-content: center;
+
+    height: 50%;
+
+    display: -webkit-flex;
+   display: flex;
+
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
+
+    -webkit-flex-direction: column; /* Safari */
+    flex-direction:         column;
+}
+
+.calendar-month {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.calendar-day {
+    margin: 10px;
 }
 
 /* preloader */

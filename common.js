@@ -55,7 +55,7 @@ $(function () {
 
             if(val.name == 'Michael') {
 
-                val.daysWithoutPrecision = _.IsLeapYear(yyyy) ? 16 : 17;
+                val.daysWithoutPrecision = _.IsLeapYear(yyyy) ? 17 : 16;
                 val.daysWithPrecision =  val.daysWithoutPrecision;
 
             } else {
@@ -77,7 +77,10 @@ $(function () {
 
     function updateTimer() { 
         var millisecondsOfLife = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date()); 
-        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date(2017, 1, 13));         
+
+        var yeear = data.newDate.getMonth() >= 1 && data.newDate.getDay() >= 1 ? data.newDate.getFullYear() : data.newDate.getFullYear() - 1;
+
+        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date(yeear, 1, 13));         
         
         var date = new Date(data.zeroDate + millisecondsOfLife.getTime());
         var dateFromYearStart = new Date(data.zeroDate + millisecondsOfLifeFromYearStart.getTime());
@@ -91,10 +94,10 @@ $(function () {
         var mm = date.getMonth() + 1; //January is 0!
         var yyyy = date.getFullYear();
 
-        var isLeap = _.IsLeapYear(yyyy);
+        //var isLeap = _.IsLeapYear(yyyy);
 
         
-        var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(ddddday, yyyy);
+        var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(ddddday + 1, yyyy);
         var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
             alias = dayInMonthAndAliasAndMonthIndex[1],
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
@@ -147,6 +150,15 @@ $(function () {
     }    
 
 
+    
+
+    /** Start */
+
+    fillFamilyData();
+
+    calendar.drawCalendar();
+
+
     /** test */
     var totalDays = family.reduce(add, 0);
 
@@ -156,10 +168,6 @@ $(function () {
 
         return a + b.daysWithoutPrecision;
     }
-
-    /** Start */
-
-    fillFamilyData();
 
     setInterval(updateTimer, 1000);
 
