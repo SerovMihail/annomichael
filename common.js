@@ -11,118 +11,118 @@ $(function () {
        
     var data = {
         zeroDate : _.getZeroDate(),
-        newDate : new Date(),
-        MichaelAges : _.getLifeMilliseconds(new Date(
-            family[0].born.year, 
-            family[0].born.month - 1, 
-            family[0].born.day), new Date()),
-        
-        dayInYearWithoutMichael : 349,
+        michaelBornDate: _.getMichaelBornDate(),
+        currentDate : new Date(),
+        michaelAge : undefined,        
+        daysInYear : 0,
         totalPercentOfAges : 0,
-        totalRoundDays : 0       
+        totalDaysWithoutCatharina : 0,
+        currentYearIsLeap: undefined,
+        oneDay: 1000 * 60 * 60 * 24       
     };
 
-    var date = new Date(data.zeroDate + data.MichaelAges.getTime());
-    var yyyy = date.getFullYear();
-
+    data.currentYearIsLeap = _.IsLeapYear(data.currentDate.getFullYear());
+    data.daysInYear = data.currentYearIsLeap ? 366 : 365;
+    
     /** block of functions */
-
     function fillFamilyData() {
 
         /**
-         * set ages and percent of Michael Ages plus summ all percents in one num
+         * set ages and percent of Michael Ages plus summ all percents in one num. and find daysFromYearStart and Leap variant 
          */
         family.forEach(function (val) {
-            var millisecondsOfLife = _.getLifeMilliseconds(new Date(
-                val.born.year, 
-                val.born.month - 1, 
-                val.born.day), data.newDate);            
-            
-            var dateA = new Date(data.zeroDate + millisecondsOfLife.getTime());
+            val.age = data.currentDate.getFullYear() - val.born.year;
+            val.percentOfMichaelAges = val.age / family[0].age; 
 
-            val.age = dateA.getFullYear();
+            data.totalPercentOfAges += val.percentOfMichaelAges;
 
             if(val.name != 'Michael') {
-                val.percentOfMichaelAges = val.age / family[0].age;      
-                data.totalPercentOfAges += val.percentOfMichaelAges;       
-            }
+                var timeDiff = Math.abs(new Date(family[0].born.year, val.born.month - 1, val.born.day).getTime() - data.michaelBornDate.getTime());
+                
+                val.daysFromYearStart = Math.floor( timeDiff / data.oneDay);
+                val.daysFromYearStartLeapYear = val.daysFromYearStart + 1;
+            }                
         });
+
+        data.michaelAge = family[0].age;
 
         /**
          * set days with and without precision
          */
         family.forEach(function (val) {             
 
-            if(val.name == 'Michael') {
+            val.daysWithPrecision = data.daysInYear / data.totalPercentOfAges * val.percentOfMichaelAges;
+            val.daysWithoutPrecision = Math.round(val.daysWithPrecision);
 
-                val.daysWithoutPrecision = _.IsLeapYear(yyyy) ? 17 : 16;
-                val.daysWithPrecision =  val.daysWithoutPrecision;
-
+            if(val.name == 'Catharina') {
+                val.daysWithoutPrecision = data.daysInYear - data.totalDaysWithoutCatharina;
             } else {
-
-                val.daysWithPrecision = data.dayInYearWithoutMichael / data.totalPercentOfAges * val.percentOfMichaelAges;
-
-                if (val.name != 'Elia') {
-                    val.daysWithoutPrecision = Math.round(val.daysWithPrecision);
-                    data.totalRoundDays += val.daysWithoutPrecision;                    
-                }                 
+                data.totalDaysWithoutCatharina += val.daysWithoutPrecision;
             }
-            
-        });
 
-        family[1].daysWithoutPrecision = data.dayInYearWithoutMichael - data.totalRoundDays;
+            if(val.name == 'Michael') {
+                val.daysWithoutPrecision += data.currentYearIsLeap ? 1 : 0;
+            }             
+        });
     }     
     
     var calendarReady = false;
 
     function updateTimer() { 
-        var millisecondsOfLife = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date()); 
 
-        var yeear = data.newDate.getMonth() >= 1 && data.newDate.getDate() >= 13 ? data.newDate.getFullYear() : data.newDate.getFullYear() - 1;
+        var currentDate = new Date();
 
-        var startOfCurrentYEar = new Date(yeear, 1, 13);
-        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), startOfCurrentYEar); 
+        var currentYear = undefined;
+        var currentYearAM = undefined;
+        if(currentDate.getMonth() >= 1 && currentDate.getDate() >= 13) {
+            currentYear = currentDate.getFullYear();
+            currentYearAM =  data.michaelAge.toString();
+        } else {
+            currentYear = currentDate.getFullYear() - 1;
+            currentYearAM = (data.michaelAge - 1).toString();
+        }
+         
+        var startDayOfAMYear = _.getMichaelBornDay(currentYear);
+
+        //var lifeMs = _.getLifeMilliseconds(data.michaelBornDate, currentDate); 
+
+        var startOfCurrentYEar = new Date(currentYear, 1, 13);
+
+        var currentDayAM =  Math.ceil(new Date(currentDate - startOfCurrentYEar).getTime() / data.oneDay);
         
-        var date = new Date(data.zeroDate + millisecondsOfLife.getTime());
-        var dateFromYearStart = new Date(data.zeroDate + millisecondsOfLifeFromYearStart.getTime());
-
-        var ss = date - dateFromYearStart;
-
-        var oneDay = 1000 * 60 * 60 * 24;
-        var ddddday = Math.floor(ss / oneDay);
-
-        var dd = date.getDate();
-        var mm = date.getMonth() + 1; //January is 0!
-        var yyyy = date.getFullYear();
         
-        var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(ddddday + 1, yyyy);
+        
+        var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(currentDayAM);
         var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
             alias = dayInMonthAndAliasAndMonthIndex[1],
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
-
-        if(!calendarReady) {
-            calendar.drawCalendar(ddddday + 1, monthIndex, startOfCurrentYEar.getDay());
-            calendarReady = true;
-        }        
 
         var dayInMonthString = dayInMonth.toString()
         while(dayInMonthString.length < 3){
             dayInMonthString='0'+dayInMonthString;
         }
 
-        var dayMonthYear =   yyyy + ' ' + monthIndex  + ' '+ dayInMonthString ;
 
-        var time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][date.getDay()];
+
+        var dayMonthYear =  currentYearAM + ' ' + monthIndex  + ' '+ dayInMonthString ;
+
+        var time = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds() + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][currentDate.getDay()];
         document.getElementsByClassName('time')[0].innerHTML = time;
         
         document.getElementsByClassName('date')[0].innerHTML = dayMonthYear;
         document.getElementsByClassName('alias')[0].innerHTML = alias;
-        document.getElementsByClassName('yearLetters')[0].innerHTML = ' A.M.';        
+        document.getElementsByClassName('yearLetters')[0].innerHTML = ' A. M.';    
+
+        /** Draw Calendar */
+        if(!calendarReady) {
+            calendar.drawCalendar(currentDayAM, monthIndex, startDayOfAMYear);
+            calendarReady = true;
+        }  
     }
 
    
 
-    function getDaysInMonthAndAliasAndMonthIndex(currentDay, year) {
+    function getDaysInMonthAndAliasAndMonthIndex(currentDay) {
             
         var M = family[0].daysWithoutPrecision,
             ME = M + family[1].daysWithoutPrecision,
@@ -158,22 +158,6 @@ $(function () {
 
     fillFamilyData();
 
-   
-
-    
-
-
-    /** test */
-    var totalDays = family.reduce(add, 0);
-
-    function add(a, b) {
-        if(a == 0)
-            return b.daysWithoutPrecision;
-
-        return a + b.daysWithoutPrecision;
-    }
-
     setInterval(updateTimer, 1000);
-
     
 });

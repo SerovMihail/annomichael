@@ -6,8 +6,8 @@ var _ = (function() {
      * @param {Date} nowDate 
      */
     function getLifeMilliseconds(bornDate, nowDate) {
-        // we have to multiply by -1 because bornDate before 1970
-        return new Date((bornDate.getTime() * -1) + nowDate.getTime()); 
+        // bornDate before 1970 therefore we have to multiply by -1 
+        return new Date((bornDate * -1) + nowDate.getTime()); 
     }
 
     /**
@@ -21,6 +21,14 @@ var _ = (function() {
         date.setFullYear(date.getFullYear() - 5000)
         var zeroDate =+ date;
         return zeroDate;
+    }
+
+    function getMichaelBornDate() {
+        return new Date(family[0].born.year, family[0].born.month - 1, family[0].born.day);
+    }
+
+    function getMichaelBornDay(year) {
+        return new Date(year, family[0].born.month - 1, family[0].born.day).getDay();
     }
 
     /**
@@ -45,7 +53,9 @@ var _ = (function() {
     return {
         "getLifeMilliseconds" : getLifeMilliseconds,
         "getZeroDate": getZeroDate,
-        "IsLeapYear": IsLeapYear
+        "IsLeapYear": IsLeapYear,
+        "getMichaelBornDate": getMichaelBornDate,
+        "getMichaelBornDay": getMichaelBornDay
     }
   
   })();

@@ -9,7 +9,9 @@ family = [
         "age": null,
         "percentOfMichaelAges": 1,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : 0,
+        "daysFromYearStartLeapYear" : 0
     },
     {
         "name": "Elia",
@@ -21,7 +23,9 @@ family = [
         "age": null,
         "percentOfMichaelAges": null,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
     },
     {
         "name": "Sergius",
@@ -33,7 +37,9 @@ family = [
         "age": null,
         "percentOfMichaelAges": null,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
     },
     {
         "name": "Egor",
@@ -45,7 +51,9 @@ family = [
         "age": null,
         "percentOfMichaelAges": null,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
     },
     {
         "name": "Van",
@@ -57,7 +65,9 @@ family = [
         "age": null,
         "percentOfMichaelAges": null,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
     },
     {
         "name": "Lexius",
@@ -69,7 +79,9 @@ family = [
         "age": null,
         "percentOfMichaelAges": null,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
     },
     {
         "name": "Catharina",
@@ -81,6 +93,8 @@ family = [
         "age": null,
         "percentOfMichaelAges": null,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
     }
 ]
