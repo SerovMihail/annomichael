@@ -1,11 +1,13 @@
 var calendar = (function() {
 
-    function drawCalendar(todayDay, todayMonth, startDayOfWeek) {
+    function drawCalendar(todayDay, todayMonth, startDayOfWeek, currentYearIsLeap) {
 
         var freeMonth =  $('.free-month');
         var fourMonth =  $('.four-month');
-
-        var birthdays = family.map(function (elem) { return elem.daysFromYearStart;})
+        
+        var birthdays = currentYearIsLeap ?  
+                family.map(function (elem) { return elem.daysFromYearStartLeapYear;}) : 
+                family.map(function (elem) { return elem.daysFromYearStart;})
 
 
         var dayOfYear = 1;
