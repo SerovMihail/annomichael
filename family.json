@@ -9,7 +9,7 @@ family = [
         "age": null,
         "percentOfMichaelAges": 1,
         "daysWithPrecision": null,
-        "daysWithoutPrecision": null,
+        "daysWithoutPrecision": null,        
         "daysFromYearStart" : 0,
         "daysFromYearStartLeapYear" : 0
     },

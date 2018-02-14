@@ -13,8 +13,7 @@ var calendar = (function() {
         var dayOfYear = 1;
         family.forEach(function(item, index) {
 
-            appendDiv = index > 2 ? fourMonth : freeMonth;
-           
+            appendDiv = index > 2 ? fourMonth : freeMonth;           
 
             var weeks = "";
             var days = "";

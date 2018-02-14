@@ -1,13 +1,5 @@
 $(function () {    
     'use strict';
-    
-    /** initialization */
-
-    // $('#fullpage').fullpage({				
-    //     navigation: true,
-    //     navigationPosition: 'right'                
-    // });  
-
        
     var data = {
         zeroDate : _.getZeroDate(),
@@ -91,7 +83,6 @@ $(function () {
         var currentDayAM =  Math.ceil(new Date(currentDate - startOfCurrentYEar).getTime() / data.oneDay);
         
         
-        
         var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(currentDayAM);
         var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
             alias = dayInMonthAndAliasAndMonthIndex[1],
@@ -101,8 +92,6 @@ $(function () {
         while(dayInMonthString.length < 3){
             dayInMonthString='0'+dayInMonthString;
         }
-
-
 
         var dayMonthYear =  currentYearAM + ' ' + monthIndex  + ' '+ dayInMonthString ;
 
@@ -115,12 +104,10 @@ $(function () {
 
         /** Draw Calendar */
         if(!calendarReady) {
-            calendar.drawCalendar(currentDayAM, monthIndex, startDayOfAMYear);
+            calendar.drawCalendar(currentDayAM, monthIndex, startDayOfAMYear, data.currentYearIsLeap);
             calendarReady = true;
         }  
     }
-
-   
 
     function getDaysInMonthAndAliasAndMonthIndex(currentDay) {
             
@@ -150,9 +137,6 @@ $(function () {
             console.log('Mistake in algorithm');
         }
     }    
-
-
-    
 
     /** Start */
 

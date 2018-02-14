@@ -23,10 +23,15 @@ var _ = (function() {
         return zeroDate;
     }
 
+    /* default Michael born date */
     function getMichaelBornDate() {
         return new Date(family[0].born.year, family[0].born.month - 1, family[0].born.day);
     }
 
+    /**
+     * get day of week by year
+     * @param {Number} year 
+     */
     function getMichaelBornDay(year) {
         return new Date(year, family[0].born.month - 1, family[0].born.day).getDay();
     }
