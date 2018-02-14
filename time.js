@@ -27,6 +27,10 @@ var _ = (function() {
         return new Date(family[0].born.year, family[0].born.month - 1, family[0].born.day);
     }
 
+    function getMichaelBornDay(year) {
+        return new Date(year, family[0].born.month - 1, family[0].born.day).getDay();
+    }
+
     /**
      * Is leap or not year
      * @param {Num} year 
@@ -50,7 +54,8 @@ var _ = (function() {
         "getLifeMilliseconds" : getLifeMilliseconds,
         "getZeroDate": getZeroDate,
         "IsLeapYear": IsLeapYear,
-        "getMichaelBornDate": getMichaelBornDate
+        "getMichaelBornDate": getMichaelBornDate,
+        "getMichaelBornDay": getMichaelBornDay
     }
   
   })();

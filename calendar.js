@@ -5,6 +5,8 @@ var calendar = (function() {
         var freeMonth =  $('.free-month');
         var fourMonth =  $('.four-month');
 
+        var birthdays = family.map(function (elem) { return elem.daysFromYearStart;})
+
 
         var dayOfYear = 1;
         family.forEach(function(item, index) {
@@ -33,7 +35,7 @@ var calendar = (function() {
 
                 if(index + 1 == todayMonth && dayOfYear == todayDay) {
                     days += "<td class='today'>" + i + "</td>";
-                } else if (dayOfYear == 50) {
+                } else if ( birthdays.indexOf( dayOfYear - 1 ) != -1) {
                     days += "<td class='birthday'>" + i + "</td>";
                 } else {
                     days += "<td>" + i + "</td>";

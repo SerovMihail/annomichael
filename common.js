@@ -13,7 +13,7 @@ $(function () {
         zeroDate : _.getZeroDate(),
         michaelBornDate: _.getMichaelBornDate(),
         currentDate : new Date(),
-        michaelAge : family[0].age,        
+        michaelAge : undefined,        
         daysInYear : 0,
         totalPercentOfAges : 0,
         totalDaysWithoutCatharina : 0,
@@ -44,6 +44,8 @@ $(function () {
             }                
         });
 
+        data.michaelAge = family[0].age;
+
         /**
          * set days with and without precision
          */
@@ -70,55 +72,57 @@ $(function () {
 
         var currentDate = new Date();
 
-        var currentYearAM = currentDate.getMonth() >= 1 && currentDate.getDate() >= 13 ? currentDate.getFullYear() : currentDate.getFullYear() - 1;
+        var currentYear = undefined;
+        var currentYearAM = undefined;
+        if(currentDate.getMonth() >= 1 && currentDate.getDate() >= 13) {
+            currentYear = currentDate.getFullYear();
+            currentYearAM =  data.michaelAge.toString();
+        } else {
+            currentYear = currentDate.getFullYear() - 1;
+            currentYearAM = (data.michaelAge - 1).toString();
+        }
+         
+        var startDayOfAMYear = _.getMichaelBornDay(currentYear);
 
-        var millisecondsOfLife = _.getLifeMilliseconds(data.michaelBornDate, currentDate); 
+        //var lifeMs = _.getLifeMilliseconds(data.michaelBornDate, currentDate); 
 
+        var startOfCurrentYEar = new Date(currentYear, 1, 13);
+
+        var currentDayAM =  Math.ceil(new Date(currentDate - startOfCurrentYEar).getTime() / data.oneDay);
         
-
-        var startOfCurrentYEar = new Date(yeear, 1, 13);
-        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), startOfCurrentYEar); 
         
-        var date = new Date(data.zeroDate + millisecondsOfLife.getTime());
-        var dateFromYearStart = new Date(data.zeroDate + millisecondsOfLifeFromYearStart.getTime());
-
-        var ss = date - dateFromYearStart;
-
-        var oneDay = 1000 * 60 * 60 * 24;
-        var ddddday = Math.floor(ss / oneDay);
-
-        var dd = date.getDate();
-        var mm = date.getMonth() + 1; //January is 0!
-        var yyyy = date.getFullYear();
         
-        var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(ddddday + 1, yyyy);
+        var dayInMonthAndAliasAndMonthIndex = getDaysInMonthAndAliasAndMonthIndex(currentDayAM);
         var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
             alias = dayInMonthAndAliasAndMonthIndex[1],
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
-
-        if(!calendarReady) {
-            calendar.drawCalendar(ddddday + 1, monthIndex, startOfCurrentYEar.getDay());
-            calendarReady = true;
-        }        
 
         var dayInMonthString = dayInMonth.toString()
         while(dayInMonthString.length < 3){
             dayInMonthString='0'+dayInMonthString;
         }
 
-        var dayMonthYear =   yyyy + ' ' + monthIndex  + ' '+ dayInMonthString ;
 
-        var time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][date.getDay()];
+
+        var dayMonthYear =  currentYearAM + ' ' + monthIndex  + ' '+ dayInMonthString ;
+
+        var time = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds() + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][currentDate.getDay()];
         document.getElementsByClassName('time')[0].innerHTML = time;
         
         document.getElementsByClassName('date')[0].innerHTML = dayMonthYear;
         document.getElementsByClassName('alias')[0].innerHTML = alias;
-        document.getElementsByClassName('yearLetters')[0].innerHTML = ' A.M.';        
+        document.getElementsByClassName('yearLetters')[0].innerHTML = ' A. M.';    
+
+        /** Draw Calendar */
+        if(!calendarReady) {
+            calendar.drawCalendar(currentDayAM, monthIndex, startDayOfAMYear);
+            calendarReady = true;
+        }  
     }
 
    
 
-    function getDaysInMonthAndAliasAndMonthIndex(currentDay, year) {
+    function getDaysInMonthAndAliasAndMonthIndex(currentDay) {
             
         var M = family[0].daysWithoutPrecision,
             ME = M + family[1].daysWithoutPrecision,
@@ -154,22 +158,6 @@ $(function () {
 
     fillFamilyData();
 
-   
-
-    
-
-
-    /** test */
-    var totalDays = family.reduce(add, 0);
-
-    function add(a, b) {
-        if(a == 0)
-            return b.daysWithoutPrecision;
-
-        return a + b.daysWithoutPrecision;
-    }
-
     setInterval(updateTimer, 1000);
-
     
 });
