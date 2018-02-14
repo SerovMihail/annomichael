@@ -1,10 +1,6 @@
 $(function () {    
     'use strict';
-
-     
-    
-    
-       
+           
     var data = {
         zeroDate : _.getZeroDate(),
         michaelBornDate: _.getMichaelBornDate(),
