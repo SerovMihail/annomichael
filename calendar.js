@@ -75,9 +75,9 @@ var calendar = (function () {
             distance: "1px"
         });
 
-        window.touchmove = function() { alert("Scrolled"); };
+        //window.touchmove = function() { alert("Scrolled"); };
 
-        window.addEventListener('onscroll', () => {
+        window.addEventListener('touchstart', () => {
             for (const popper of document.querySelectorAll('.tippy-popper')) {
               const instance = popper._tippy
           
