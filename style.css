@@ -27,7 +27,7 @@ html, body {
 .inline-flex {
     display: inline-flex;
     align-items: center;
-    padding-left: 11vw;
+    padding-left: 9vw;
     height: 5.5vw;
 }
 
@@ -44,7 +44,7 @@ html, body {
 }
 
 .yearLetters {
-    padding-left: 2vw;
+    padding-left: 1vw;
 }
 
 .alias {
@@ -104,8 +104,8 @@ td,th{
     -webkit-justify-content: space-around; /* Safari */
     justify-content:         space-around;
 
-    -webkit-flex-direction: column; /* Safari */
-    flex-direction:         column;
+    -webkit-flex-direction: row; /* Safari */
+    flex-direction:         row;
 }
 
 .calendar-month {
@@ -120,6 +120,10 @@ td,th{
 
 .today {
     background-color: red;
+}
+
+.birthday {
+    background-color: yellow;
 }
 
 /* preloader */

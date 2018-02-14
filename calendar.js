@@ -15,6 +15,9 @@ var calendar = (function() {
             var weeks = "";
             var days = "";
 
+            if(startDayOfWeek > 7)
+                startDayOfWeek = 1;
+
             for (var f = 1; f < startDayOfWeek; f++) {
                 days += "<td></td>";                
             }            
@@ -30,6 +33,8 @@ var calendar = (function() {
 
                 if(index + 1 == todayMonth && dayOfYear == todayDay) {
                     days += "<td class='today'>" + i + "</td>";
+                } else if (dayOfYear == 50) {
+                    days += "<td class='birthday'>" + i + "</td>";
                 } else {
                     days += "<td>" + i + "</td>";
                 }               
@@ -38,9 +43,12 @@ var calendar = (function() {
                 dayOfYear++;
             }
 
+            weeks += "<tr>" + days + "</tr>"
+            days = "";
+
             var tbody = "<tbody>" + weeks + "</tbody>"
 
-            var dayOfWeeks = "<tr><th>ПН</th><th>ВТ</th><th>СР</th><th>ЧТ</th><th>ПТ</th><th>СБ</th><th>ВСК</th></tr>";
+            var dayOfWeeks = "<tr><th>ПН</th><th>ВТ</th><th>СР</th><th>ЧТ</th><th>ПТ</th><th>СБ</th><th>ВС</th></tr>";
             var monthTitle = "<tr><th colspan='7' class='calendar-month-title'>" + item.name +"</th></tr>"
 
             var thead = "<thead>" + monthTitle + dayOfWeeks + "</thead>";

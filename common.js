@@ -3,10 +3,10 @@ $(function () {
     
     /** initialization */
 
-    $('#fullpage').fullpage({				
-        navigation: true,
-        navigationPosition: 'right'                
-    });  
+    // $('#fullpage').fullpage({				
+    //     navigation: true,
+    //     navigationPosition: 'right'                
+    // });  
 
        
     var data = {
@@ -80,7 +80,7 @@ $(function () {
 
         var yeear = data.newDate.getMonth() >= 1 && data.newDate.getDate() >= 13 ? data.newDate.getFullYear() : data.newDate.getFullYear() - 1;
 
-        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date(yeear, 1, 13));         
+        var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date(yeear, 1, 13)); 
         
         var date = new Date(data.zeroDate + millisecondsOfLife.getTime());
         var dateFromYearStart = new Date(data.zeroDate + millisecondsOfLifeFromYearStart.getTime());
