@@ -10,6 +10,8 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     color: #212529;   
 
+    
+
     .text-center {
         text-align: center
     }   
@@ -158,6 +160,12 @@ html, body {
 
 
 @media (max-width:1280px){
+
+    html, body {
+        overflow: -moz-scrollbars-vertical; 
+        overflow-y: scroll; 
+    }
+    
     
     .free-month, .four-month {        
         flex-direction:         column !important;

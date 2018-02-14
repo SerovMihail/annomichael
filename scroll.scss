@@ -1,0 +1,28 @@
+::-webkit-scrollbar {
+    width: 6px;    
+    -webkit-appearance: none;    
+}
+ 
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;    
+}
+
+::-webkit-scrollbar-corner{
+    border-radius:5px;
+}
+
+/* The vertical thumb*/
+::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #CFCFCF;
+}
+
+/* The vertical thumb*/
+::-webkit-scrollbar-thumb:horizontal {
+    height: 50px;
+    background-color: gray;
+}
