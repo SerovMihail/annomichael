@@ -1,0 +1,173 @@
+@import "fonts";
+//@import "libs";
+@import "vars";
+
+@import "preloader.scss";
+@import "scroll.scss";
+
+html, body {
+
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    color: #212529;       
+
+    .text-center {
+        text-align: center
+    }   
+
+    .wr {
+        height: 100%;
+
+        .more_info {
+            border-bottom: 1px dotted;
+            position: relative;
+          }
+          
+          .more_info .title {
+            position: absolute;
+            top: 20px;
+            background: silver;
+            padding: 4px;
+            left: 0;
+            white-space: nowrap;
+          }
+
+        .container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;   
+            flex-direction: column;
+            height: 100vh;    
+            margin: 0 auto;   
+            
+        }
+    
+        .section {
+            width: 90% !important;
+            margin: 0 auto;
+        }
+    
+        .inline-flex {
+            display: inline-flex;
+            align-items: center;
+            padding-left: 9vw;
+            height: 5.5vw;
+        }
+        
+        .date  {
+            font-size: 7vw;
+        }
+        
+        .yearLetters, .time {
+            font-size: 4vw;
+        }
+        
+        .time {
+            height: 4.5vw;
+        }
+        
+        .yearLetters {
+            padding-left: 1vw;
+        }
+        
+        .alias {
+            font-size: 3vw;
+        }
+    
+        /* calendar styles */ 
+    
+        table {
+            background-color: white;
+            border-collapse: collapse;
+            font-family: Tahoma,Geneva,sans-serif;
+            margin: 20px 5px;            
+    
+            thead {
+                display: block;
+                margin: 4px 4px 0px 4px; 
+        
+                .calendar-month-title {
+                    font-weight: bold;
+                    width: 100% !important;
+                }
+            }
+    
+            tbody {
+                display: block;
+                margin: 0px 4px 4px 4px;
+            }
+    
+            td,th{
+                display: inline-block;
+                float: left;
+                height: 36px;           
+                margin: 1px 0.17vw;
+                line-height: 36px;
+                text-align: center;
+                font-size: 12px;
+                font-weight: lighter;
+                cursor: default;
+                transition: color 0.1s,background-color 0.2s;                
+            }
+        }
+    
+        .free-month, .four-month {
+    
+            align-content: center;
+    
+            height: 50%;
+    
+            display: -webkit-flex;
+            display: flex;
+    
+            -webkit-justify-content: space-around; /* Safari */
+            justify-content:         space-around;
+    
+            -webkit-flex-direction: row; /* Safari */
+            flex-direction:         row;
+    
+            table {
+                width: 28vw;
+    
+                td, th {
+                    width: 3.4vw;
+                }
+            }
+        }
+    
+        .four-month {
+    
+            margin-bottom: 10px;
+    
+            table {
+    
+                width: 21vw;
+    
+                td, th {
+                    width: 2.4vw;
+                }
+            }
+        }
+    
+    
+        .calendar-month {
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+    
+        .calendar-day {
+            padding: 5px;
+        }
+    
+        .today {
+            background-color: rgba(137, 137, 137, 0.4);
+            font-weight: 900;
+            border-radius: 2px;
+        }    
+    }    
+}
+
+@import "media"; // Всегда в конце

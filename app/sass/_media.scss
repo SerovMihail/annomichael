@@ -1,0 +1,52 @@
+@import "vars";
+
+/*==========  Desktop First  ==========*/
+
+@media (max-width:1280px){
+
+    html, body {
+        overflow: -moz-scrollbars-vertical; 
+        overflow-y: scroll; 
+    }
+    
+    
+    .free-month, .four-month {        
+        flex-direction:         column !important;
+    }
+
+    table {
+        margin: 10px auto !important;
+        width: 61vw !important;
+    }
+
+    th, td {
+        width: 7.9vw !important;
+    }
+
+       
+}
+
+@media (max-width:768px) {
+    table {
+        width: 63vw !important;
+    }
+
+}
+
+@media (max-width:425px) {
+    table {
+        width: 64vw !important;
+    }
+}
+
+@media (max-width:375px) {
+    table {
+        width: 65vw !important;
+    }
+}
+
+@media (max-width:320px) {
+    table {
+        width: 67vw !important;
+    }
+}
