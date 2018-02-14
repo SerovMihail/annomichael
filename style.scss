@@ -1,5 +1,6 @@
-@import "colors.scss";
+// @import "colors.scss";
 @import "preloader.scss";
+@import "scroll.scss";
 
 html, body {
 
@@ -13,142 +14,143 @@ html, body {
         text-align: center
     }   
 
-    .container {
-        display: flex;
-        justify-content: center; 
-        align-items: center;   
-        flex-direction: column;
-        height: 100%;    
-        margin: 0 auto;    
-    }
+    .wr {
+        height: 100%;
 
-    .section {
-        width: 90% !important;
-        margin: 0 auto;
-    }
-
-    .inline-flex {
-        display: inline-flex;
-        align-items: center;
-        padding-left: 9vw;
-        height: 5.5vw;
-    }
-    
-    .date  {
-        font-size: 7vw;
-    }
-    
-    .yearLetters, .time {
-        font-size: 4vw;
-    }
-    
-    .time {
-        height: 4.5vw;
-    }
-    
-    .yearLetters {
-        padding-left: 1vw;
-    }
-    
-    .alias {
-        font-size: 3vw;
-    }
-
-    /* calendar styles */ 
-
-    table {
-        background-color: white;
-        border-collapse: collapse;
-        font-family: Tahoma,Geneva,sans-serif;
-        margin: 20px 5px;
-        border-radius: 4px;
-
-        thead {
-            display: block;
-            margin: 4px 4px 0px 4px; 
-    
-            .calendar-month-title {
-                font-weight: bold;
-                width: 100% !important;
-            }
+        .container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;   
+            flex-direction: column;
+            height: 100vh;    
+            margin: 0 auto;   
+            
         }
-
-        tbody {
-            display: block;
-            margin: 0px 4px 4px 4px;
+    
+        .section {
+            width: 90% !important;
+            margin: 0 auto;
         }
-
-        td,th{
-            display: inline-block;
-            float: left;
-            height: 36px;           
-            margin: 1px 0.17vw;
-            line-height: 36px;
-            text-align: center;
-            font-size: 12px;
-            font-weight: lighter;
-            cursor: default;
-            transition: color 0.1s,background-color 0.2s;
-            border-radius: 18px;
+    
+        .inline-flex {
+            display: inline-flex;
+            align-items: center;
+            padding-left: 9vw;
+            height: 5.5vw;
         }
-    }
-
-    .free-month, .four-month {
-
-        align-content: center;
-
-        height: 50%;
-
-        display: -webkit-flex;
-        display: flex;
-
-        -webkit-justify-content: space-around; /* Safari */
-        justify-content:         space-around;
-
-        -webkit-flex-direction: row; /* Safari */
-        flex-direction:         row;
-
-        table {
-            width: 28vw;
-
-            td, th {
-                width: 3.4vw;
-            }
-        }
-    }
-
-    .four-month {
-
-        margin-bottom: 10px;
-
-        table {
-
-            width: 21vw;
-
-            td, th {
-                width: 2.4vw;
-            }
-        }
-    }
-
-
-    .calendar-month {
-        display: flex;
-        flex-wrap: wrap;
         
-    }
-
-    .calendar-day {
-        padding: 5px;
-    }
-
-    .today {
-        background-color: rgba(255, 0, 0, 0.01);
-        font-weight: 900;
-        box-shadow: 1px 1px 2px 0px grey;
-    }
-
+        .date  {
+            font-size: 7vw;
+        }
+        
+        .yearLetters, .time {
+            font-size: 4vw;
+        }
+        
+        .time {
+            height: 4.5vw;
+        }
+        
+        .yearLetters {
+            padding-left: 1vw;
+        }
+        
+        .alias {
+            font-size: 3vw;
+        }
     
+        /* calendar styles */ 
+    
+        table {
+            background-color: white;
+            border-collapse: collapse;
+            font-family: Tahoma,Geneva,sans-serif;
+            margin: 20px 5px;            
+    
+            thead {
+                display: block;
+                margin: 4px 4px 0px 4px; 
+        
+                .calendar-month-title {
+                    font-weight: bold;
+                    width: 100% !important;
+                }
+            }
+    
+            tbody {
+                display: block;
+                margin: 0px 4px 4px 4px;
+            }
+    
+            td,th{
+                display: inline-block;
+                float: left;
+                height: 36px;           
+                margin: 1px 0.17vw;
+                line-height: 36px;
+                text-align: center;
+                font-size: 12px;
+                font-weight: lighter;
+                cursor: default;
+                transition: color 0.1s,background-color 0.2s;                
+            }
+        }
+    
+        .free-month, .four-month {
+    
+            align-content: center;
+    
+            height: 50%;
+    
+            display: -webkit-flex;
+            display: flex;
+    
+            -webkit-justify-content: space-around; /* Safari */
+            justify-content:         space-around;
+    
+            -webkit-flex-direction: row; /* Safari */
+            flex-direction:         row;
+    
+            table {
+                width: 28vw;
+    
+                td, th {
+                    width: 3.4vw;
+                }
+            }
+        }
+    
+        .four-month {
+    
+            margin-bottom: 10px;
+    
+            table {
+    
+                width: 21vw;
+    
+                td, th {
+                    width: 2.4vw;
+                }
+            }
+        }
+    
+    
+        .calendar-month {
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+    
+        .calendar-day {
+            padding: 5px;
+        }
+    
+        .today {
+            background-color: rgba(137, 137, 137, 0.4);
+            font-weight: 900;
+            border-radius: 2px;
+        }    
+    }    
 }
 
 

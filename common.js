@@ -1,5 +1,9 @@
 $(function () {    
     'use strict';
+
+     
+    
+    
        
     var data = {
         zeroDate : _.getZeroDate(),
@@ -19,11 +23,22 @@ $(function () {
     /** block of functions */
     function fillFamilyData() {
 
+
+        var currentDate = new Date();
+
+        var currentYear = undefined;
+        
+        if(currentDate.getMonth() >= 1 && currentDate.getDate() >= 13) {
+            currentYear = currentDate.getFullYear();            
+        } else {
+            currentYear = currentDate.getFullYear() - 1;            
+        }
+
         /**
          * set ages and percent of Michael Ages plus summ all percents in one num. and find daysFromYearStart and Leap variant 
          */
         family.forEach(function (val) {
-            val.age = data.currentDate.getFullYear() - val.born.year;
+            val.age = currentYear - val.born.year;
             val.percentOfMichaelAges = val.age / family[0].age; 
 
             data.totalPercentOfAges += val.percentOfMichaelAges;
@@ -71,7 +86,7 @@ $(function () {
             currentYearAM =  data.michaelAge.toString();
         } else {
             currentYear = currentDate.getFullYear() - 1;
-            currentYearAM = (data.michaelAge - 1).toString();
+            currentYearAM = (data.michaelAge).toString();
         }
          
         var startDayOfAMYear = _.getMichaelBornDay(currentYear);
@@ -141,6 +156,8 @@ $(function () {
     /** Start */
 
     fillFamilyData();
+
+    
 
     setInterval(updateTimer, 1000);
     

@@ -18,5 +18,9 @@ window.onload = function () {
         fadeOutnojquery(preloader);
     }, 1000);
 
+    $('body').mCustomScrollbar({
+        theme: "rounded-dark",
+        scrollInertia:300
+    });
     
 };
