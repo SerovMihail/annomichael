@@ -2,12 +2,7 @@
 
 /*==========  Desktop First  ==========*/
 
-@media (max-width:1280px){
-
-    html, body {
-        overflow: -moz-scrollbars-vertical; 
-        overflow-y: scroll; 
-    }
+@media (max-width:1280px){    
     
     .free-month, .four-month {        
         flex-direction:         column !important;
@@ -53,6 +48,12 @@
 }
 
 @media (max-width:768px) {
+
+    html, body {
+        overflow: -moz-scrollbars-vertical; 
+        overflow-y: scroll; 
+    }
+
     table {
         width: 63vw !important;
     }
