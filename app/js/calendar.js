@@ -85,13 +85,15 @@ var calendar = (function () {
 
         window.addEventListener('touchstart', function () {
 
-            var instance = document.getElementsByClassName('tippy-popper')[0]._tippy;//.forEach(function (popper) {
-            
-            if (instance.state.visible) {                
-                instance.hide(0);
-            }
-
-        });
+            document.querySelectorAll('.tippy-popper').forEach(function (popper) {
+               var instance = popper._tippy
+          
+                if (instance.state.visible) {
+                    instance.popperInstance.disableEventListeners()
+                    instance.hide()
+                }
+            });            
+          });        
     }
 
     return {
