@@ -32,7 +32,7 @@ gulp.task('common-js', function() {
 
 gulp.task('js', ['common-js'], function() {
 	return gulp.src([		
-		'app/libs/tippy/tippy.all.min.js',
+		//'app/libs/tippy/tippy.all.min.js',
 				
 		'app/js/common.min.js', // Всегда в конце
 		])

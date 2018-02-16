@@ -36,13 +36,13 @@ var calendar = (function () {
                 if(index + 1 == todayMonth && dayOfYear == todayDay && birthdays.indexOf(dayOfYear - 1) != -1) {
                     var birthdayPerson = findBirthdayPerson(dayOfYear);
 
-                    days += "<td class='today " + birthdayPerson.name + "-color' title='Сегодня день рождения у " + birthdayPerson.name + "'>" + i + "</td>";
+                    days += "<td class='hint--top today " + birthdayPerson.name + "-color' aria-label='Сегодня день рождения у " + birthdayPerson.name + "'>" + i + "</td>";
                 } else if (index + 1 == todayMonth && dayOfYear == todayDay) {
-                    days += "<td class='today' title='Сегодня'>" + i + "</td>";
+                    days += "<td class='today hint--top' aria-label='Сегодня'>" + i + "</td>";
                 } else if (birthdays.indexOf(dayOfYear - 1) != -1) {
                     var birthdayPerson = findBirthdayPerson(dayOfYear);
 
-                    days += "<td class='" + birthdayPerson.name + "-color' title='День рождения " + birthdayPerson.name + "'>" + i + "</td>";
+                    days += "<td class='" + birthdayPerson.name + "-color hint--top' aria-label='День рождения " + birthdayPerson.name + "'>" + i + "</td>";
                 } else {
                     days += "<td>" + i + "</td>";
                 }
@@ -77,23 +77,7 @@ var calendar = (function () {
             });
         }
 
-        tippy('[title]', {
-            trigger: "mouseenter focus",
-            animation: 'scale',
-            duration: 0,            
-        });
-
-        window.addEventListener('touchstart', function () {
-
-            document.querySelectorAll('.tippy-popper').forEach(function (popper) {
-               var instance = popper._tippy
-          
-                if (instance.state.visible) {
-                    instance.popperInstance.disableEventListeners()
-                    instance.hide()
-                }
-            });            
-          });        
+               
     }
 
     return {

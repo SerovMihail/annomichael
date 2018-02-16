@@ -4,8 +4,11 @@
 
 @import "preloader.scss";
 @import "scroll.scss";
+@import "tooltip.scss";
 
 html, body {
+
+    user-select: none;
 
     height: 100%;
     margin: 0;
@@ -168,8 +171,7 @@ html, body {
             }
         
             .today {
-                background-color: rgba(137, 137, 137, 0.4);
-                font-weight: 900;
+                background-color: rgba(137, 137, 137, 0.4);                
                 border-radius: 2px;
                 font-family: "Roboto-Bold";
             } 
@@ -177,7 +179,7 @@ html, body {
             .signature {
 
                 display: none;
-                bottom: 15px;
+                bottom: 25px;
                 position: absolute;
                 right: 15px;
                 
