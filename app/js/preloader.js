@@ -1,4 +1,5 @@
 var preloader = document.getElementsByClassName("mk-spinner-wrap")[0];
+var signature = document.getElementsByClassName("signature")[0];
 
 function fadeOutnojquery(el) {
     el.style.opacity = 1;
@@ -8,10 +9,11 @@ function fadeOutnojquery(el) {
             el.style.opacity = el.style.opacity - 0.05;
             
             if (el.style.opacity <= 0.05) {
-                clearInterval(interhellopreloader);
+                clearInterval(interhellopreloader);               
                 preloader.style.display = "none";
+                signature.style.display = "block";               
             }
-        }, 16);
+        }, 30);
 }
 window.onload = function () {
     setTimeout(function () {

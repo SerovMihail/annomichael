@@ -8,8 +8,7 @@
   },
   "author": "Serov M.E",
   "license": "ISC",
-  "devDependencies": {
-    "bootstrap": "^3.3.7",
+  "devDependencies": {    
     "browser-sync": "^2.18.8",
     "del": "^2.2.2",
     "gulp": "^3.9.1",

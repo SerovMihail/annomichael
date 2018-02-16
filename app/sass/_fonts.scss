@@ -1,7 +1,5 @@
 @import "_mixins/font-face";
 
-@font-face("roboto", "../fonts/RobotoRegular/RobotoRegular");
-@font-face("robotoBold", "../fonts/RobotoBold/RobotoBold", bold);
-
-
-
+@include local-font-face("Roboto", "../fonts/Roboto-Light");
+@include local-font-face("Roboto-Regular", "../fonts/Roboto-Regular");
+@include local-font-face("Roboto-Bold", "../fonts/Roboto-Bold");

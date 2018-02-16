@@ -9,7 +9,6 @@
         overflow-y: scroll; 
     }
     
-    
     .free-month, .four-month {        
         flex-direction:         column !important;
     }
@@ -26,9 +25,40 @@
        
 }
 
+@media (max-width: 1024px) {
+
+    .inline-flex {
+        height: 7.5vw !important;
+        padding-left: 11.3vw !important;
+
+        .date {
+            font-size: 9vw !important;
+        }
+
+        .year-letters {
+            font-size: 5vw !important;
+            padding-left: 1.3vw !important;
+        }
+    }
+
+    .time {
+        font-size: 5vw !important;
+        height: 5.5vw !important;
+    }
+
+    .alias {
+        font-size: 4.2vw !important;
+    }
+
+}
+
 @media (max-width:768px) {
     table {
         width: 63vw !important;
+    }
+
+    .signature img {
+        width: 20vw !important;
     }
 
 }
@@ -36,6 +66,16 @@
 @media (max-width:425px) {
     table {
         width: 64vw !important;
+    }
+
+    .signature {
+        display: none;
+        bottom: 5px !important;        
+        right: 5px !important;
+    }
+
+    .signature img {
+        width: 25vw !important;
     }
 }
 

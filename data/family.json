@@ -1,0 +1,100 @@
+family = [
+    {
+        "name": "Michael",
+        "born": {
+            "day": 13,
+            "month": 2,
+            "year": 1938
+        }, 
+        "age": null,
+        "percentOfMichaelAges": 1,
+        "daysWithPrecision": null,
+        "daysWithoutPrecision": null,        
+        "daysFromYearStart" : 0,
+        "daysFromYearStartLeapYear" : 0
+    },
+    {
+        "name": "Elia",
+        "born": {
+            "day": 10,
+            "month": 4,
+            "year": 1970
+        },
+        "age": null,
+        "percentOfMichaelAges": null,
+        "daysWithPrecision": null,
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
+    },
+    {
+        "name": "Sergius",
+        "born": {
+            "day": 15,
+            "month": 8,
+            "year": 1973
+        },
+        "age": null,
+        "percentOfMichaelAges": null,
+        "daysWithPrecision": null,
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
+    },
+    {
+        "name": "Egor",
+        "born": {
+            "day": 4,
+            "month": 4,
+            "year": 1996
+        },
+        "age": null,
+        "percentOfMichaelAges": null,
+        "daysWithPrecision": null,
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
+    },
+    {
+        "name": "Van",
+        "born": {
+            "day": 17,
+            "month": 4,
+            "year": 1996
+        },
+        "age": null,
+        "percentOfMichaelAges": null,
+        "daysWithPrecision": null,
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
+    },
+    {
+        "name": "Lexius",
+        "born": {
+            "day": 9,
+            "month": 3,
+            "year": 2004
+        },
+        "age": null,
+        "percentOfMichaelAges": null,
+        "daysWithPrecision": null,
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
+    },
+    {
+        "name": "Catharina",
+        "born": {
+            "day": 21,
+            "month": 4,
+            "year": 2010
+        },
+        "age": null,
+        "percentOfMichaelAges": null,
+        "daysWithPrecision": null,
+        "daysWithoutPrecision": null,
+        "daysFromYearStart" : null,
+        "daysFromYearStartLeapYear" : null
+    }
+]

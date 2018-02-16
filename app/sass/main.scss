@@ -9,33 +9,33 @@ html, body {
 
     height: 100%;
     margin: 0;
-    box-sizing: border-box;
-    //font-family: 'Open Sans', sans-serif;
-    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;    
+    font-family: "Roboto";
     color: #212529;       
 
     .text-center {
         text-align: center
     }   
 
-    .wr {
+    .wrapper {
         height: 100%;
+        position: relative;        
 
         .more_info {
             border-bottom: 1px dotted;
             position: relative;
-          }
+        }
           
-          .more_info .title {
+        .more_info .title {
             position: absolute;
             top: 20px;
             background: silver;
             padding: 4px;
             left: 0;
             white-space: nowrap;
-          }
+        }
 
-        .container {
+        .counter {
             display: flex;
             justify-content: center; 
             align-items: center;   
@@ -61,7 +61,7 @@ html, body {
             font-size: 7vw;
         }
         
-        .yearLetters, .time {
+        .year-letters, .time {
             font-size: 4vw;
         }
         
@@ -69,7 +69,7 @@ html, body {
             height: 4.5vw;
         }
         
-        .yearLetters {
+        .year-letters {
             padding-left: 1vw;
         }
         
@@ -81,17 +81,16 @@ html, body {
     
         table {
             background-color: white;
-            border-collapse: collapse;
-            font-family: Tahoma,Geneva,sans-serif;
+            border-collapse: collapse;            
             margin: 20px 5px;            
     
             thead {
                 display: block;
                 margin: 4px 4px 0px 4px; 
         
-                .calendar-month-title {
-                    font-weight: bold;
+                .calendar-month-title {                    
                     width: 100% !important;
+                    font-family: "Roboto-Bold";
                 }
             }
     
@@ -113,61 +112,80 @@ html, body {
                 transition: color 0.1s,background-color 0.2s;                
             }
         }
+
+        .calendar {
+
+            font-family: "Roboto-Regular";
+            position: relative;
+
+            .free-month, .four-month {
     
-        .free-month, .four-month {
-    
-            align-content: center;
-    
-            height: 50%;
-    
-            display: -webkit-flex;
-            display: flex;
-    
-            -webkit-justify-content: space-around; /* Safari */
-            justify-content:         space-around;
-    
-            -webkit-flex-direction: row; /* Safari */
-            flex-direction:         row;
-    
-            table {
-                width: 28vw;
-    
-                td, th {
-                    width: 3.4vw;
+                align-content: center;
+        
+                height: 50%;
+        
+                display: -webkit-flex;
+                display: flex;
+        
+                -webkit-justify-content: space-around; /* Safari */
+                justify-content:         space-around;
+        
+                -webkit-flex-direction: row; /* Safari */
+                flex-direction:         row;
+        
+                table {
+                    width: 28vw;
+        
+                    td, th {
+                        width: 3.4vw;
+                    }
                 }
             }
-        }
-    
-        .four-month {
-    
-            margin-bottom: 10px;
-    
-            table {
-    
-                width: 21vw;
-    
-                td, th {
-                    width: 2.4vw;
+        
+            .four-month {
+        
+                margin-bottom: 10px;
+        
+                table {
+        
+                    width: 21vw;
+        
+                    td, th {
+                        width: 2.4vw;
+                    }
                 }
             }
-        }
-    
-    
-        .calendar-month {
-            display: flex;
-            flex-wrap: wrap;
-            
-        }
-    
-        .calendar-day {
-            padding: 5px;
-        }
-    
-        .today {
-            background-color: rgba(137, 137, 137, 0.4);
-            font-weight: 900;
-            border-radius: 2px;
-        }    
+        
+        
+            .calendar-month {
+                display: flex;
+                flex-wrap: wrap;
+                
+            }
+        
+            .calendar-day {
+                padding: 5px;
+            }
+        
+            .today {
+                background-color: rgba(137, 137, 137, 0.4);
+                font-weight: 900;
+                border-radius: 2px;
+                font-family: "Roboto-Bold";
+            } 
+
+            .signature {
+
+                display: none;
+                bottom: 15px;
+                position: absolute;
+                right: 15px;
+                
+                img {
+                    width: 15vw;
+                }
+            }
+        }           
     }    
 }
 

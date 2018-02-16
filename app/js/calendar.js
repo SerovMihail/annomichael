@@ -1,9 +1,8 @@
 var calendar = (function () {
 
     function drawCalendar(todayDay, todayMonth, startDayOfWeek, currentYearIsLeap) {
-
-        var freeMonth = $('.free-month');
-        var fourMonth = $('.four-month');
+        var freeMonth = document.getElementsByClassName("free-month")[0];
+        var fourMonth = document.getElementsByClassName("four-month")[0];
 
         var birthdays = currentYearIsLeap ?
             family.map(function (elem) { return elem.daysFromYearStartLeapYear; }) :
@@ -62,8 +61,8 @@ var calendar = (function () {
 
             var thead = "<thead>" + monthTitle + dayOfWeeks + "</thead>";
             var table = "<table>" + thead + tbody + "</table>";
-
-            appendDiv.append(table);
+           
+            appendDiv.innerHTML += table;
         });
 
         function findBirthdayPerson(dayOfYear) {
@@ -80,20 +79,17 @@ var calendar = (function () {
 
         tippy('[title]', {
             trigger: "mouseenter focus",
-            distance: "1px"
+            animation: 'scale',
+            duration: 0,            
         });
 
         window.addEventListener('touchstart', function () {
 
-            document.querySelectorAll('.tippy-popper').forEach(function (popper) {
-                var instance = popper._tippy
-
-                if (instance.state.visible) {
-                    instance.popperInstance.disableEventListeners()
-                    instance.hide()
-                }
-            });
-
+            var instance = document.getElementsByClassName('tippy-popper')[0]._tippy;//.forEach(function (popper) {
+            
+            if (instance.state.visible) {                
+                instance.hide(0);
+            }
 
         });
     }
@@ -101,5 +97,6 @@ var calendar = (function () {
     return {
         "drawCalendar": drawCalendar
     };
+    
 
 })();

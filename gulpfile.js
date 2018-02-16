@@ -18,7 +18,7 @@ var gulp           = require('gulp'),
 gulp.task('common-js', function() {
 	return gulp.src([
 		 
-		 'app/js/time.js',
+		'app/js/time.js',
 		
 		'app/js/common.js',
 		'app/js/preloader.js',
@@ -31,8 +31,7 @@ gulp.task('common-js', function() {
 });
 
 gulp.task('js', ['common-js'], function() {
-	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
+	return gulp.src([		
 		'app/libs/tippy/tippy.all.min.js',
 				
 		'app/js/common.min.js', // Всегда в конце
@@ -66,7 +65,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function() {
 	gulp.watch('app/sass/**/*.+(scss|sass)', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
+	gulp.watch(['libs/**/*.js', 'app/js/**.js', '!app/js/*.min.js'], ['js']);
 	gulp.watch('app/*.html', browserSync.reload);
 });
 

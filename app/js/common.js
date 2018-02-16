@@ -1,5 +1,5 @@
 
-$(function () {    
+document.addEventListener("DOMContentLoaded", function () {    
     'use strict';
            
     var data = {
@@ -17,6 +17,7 @@ $(function () {
     data.currentYearIsLeap = _.IsLeapYear(data.currentDate.getFullYear());
     data.daysInYear = data.currentYearIsLeap ? 366 : 365;
     
+
     /** block of functions */
     function fillFamilyData() {
 
@@ -104,12 +105,12 @@ $(function () {
 
         var dayMonthYear =  currentYearAM + ' ' + monthIndex  + ' '+ dayInMonth ;
 
-        var time = currentDate.getHours() + ':' + fixSize(currentDate.getMinutes(), 2) + ':' + fixSize(currentDate.getSeconds(), 2) + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][currentDate.getDay()];
+        var time = fixSize(currentDate.getHours(), 2) + ':' + fixSize(currentDate.getMinutes(), 2) + ':' + fixSize(currentDate.getSeconds(), 2) + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][currentDate.getDay()];
         document.getElementsByClassName('time')[0].innerHTML = time;
         
         document.getElementsByClassName('date')[0].innerHTML = dayMonthYear;
         document.getElementsByClassName('alias')[0].innerHTML = alias;
-        document.getElementsByClassName('yearLetters')[0].innerHTML = ' A. M.';    
+        document.getElementsByClassName('year-letters')[0].innerHTML = ' A. M.';    
 
         /** Draw Calendar */
         if(!calendarReady) {
@@ -167,3 +168,4 @@ $(function () {
     setInterval(updateTimer, 1000);
     
 });
+
