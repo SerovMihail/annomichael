@@ -99,15 +99,12 @@ $(function () {
         var dayInMonth = dayInMonthAndAliasAndMonthIndex[0],
             alias = dayInMonthAndAliasAndMonthIndex[1],
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
-
-        var dayInMonth = dayInMonth.toString()
-        while(dayInMonth.length < 3){
-            dayInMonth='0'+dayInMonth;
-        }
+        
+        dayInMonth = fixSize(dayInMonth, 3);
 
         var dayMonthYear =  currentYearAM + ' ' + monthIndex  + ' '+ dayInMonth ;
 
-        var time = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds() + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][currentDate.getDay()];
+        var time = currentDate.getHours() + ':' + fixSize(currentDate.getMinutes(), 2) + ':' + fixSize(currentDate.getSeconds(), 2) + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][currentDate.getDay()];
         document.getElementsByClassName('time')[0].innerHTML = time;
         
         document.getElementsByClassName('date')[0].innerHTML = dayMonthYear;
@@ -121,6 +118,16 @@ $(function () {
         }  
     }
 
+    function fixSize(str, size) {
+        str = str.toString();       
+
+        while(str.length < size){            
+            str='0'+str;
+        }
+
+        return str;
+    }
+
     function getDaysInMonthAndAliasAndMonthIndex(currentDay) {
             
         var M = family[0].daysWithoutPrecision,
@@ -131,8 +138,7 @@ $(function () {
             MESEVL =  MESEV + family[5].daysWithoutPrecision,
             MESEVLC =  MESEVL + family[6].daysWithoutPrecision;
 
-
-            console.log(MES);
+            
         if(currentDay > 0 && currentDay <= M) {
             return [currentDay, 'MICHAEL', 1];
         } else if (currentDay > M && currentDay <= ME) {
