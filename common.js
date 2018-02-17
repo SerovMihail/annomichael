@@ -17,14 +17,18 @@ $(function () {
             family[0].born.month - 1, 
             family[0].born.day), new Date()),
         
-        dayInYearWithoutMichael : 349,
+        daysInYear : null,
         totalPercentOfAges : 0,
         totalRoundDays : 0       
     };
 
-    var date = new Date(data.zeroDate + data.MichaelAges.getTime());
+    var date = new Date( data.MichaelAges.getTime() - data.zeroDate);
     var yyyy = date.getFullYear();
 
+    data.daysInYear = _.IsLeapYear(yyyy) ? 366 : 365;
+
+
+    
     /** block of functions */
 
     function fillFamilyData() {
