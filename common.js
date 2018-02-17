@@ -11,45 +11,37 @@ $(function () {
        
     var data = {
         zeroDate : _.getZeroDate(),
-        newDate : new Date(),
-        MichaelAges : _.getLifeMilliseconds(new Date(
-            family[0].born.year, 
-            family[0].born.month - 1, 
-            family[0].born.day), new Date()),
-        
-        daysInYear : null,
+        michaelBornDate: _.getMichaelBornDate(),
+        currentDate : new Date(),
+        michaelAge : family[0].age,        
+        daysInYear : 0,
         totalPercentOfAges : 0,
-        totalRoundDays : 0       
+        totalDaysWithoutCatharina : 0,
+        currentYearIsLeap: undefined,
+        oneDay: 1000 * 60 * 60 * 24       
     };
 
-    var date = new Date( data.MichaelAges.getTime() - data.zeroDate);
-    var yyyy = date.getFullYear();
-
-    data.daysInYear = _.IsLeapYear(yyyy) ? 366 : 365;
-
-
+    data.currentYearIsLeap = _.IsLeapYear(data.currentDate.getFullYear());
+    data.daysInYear = data.currentYearIsLeap ? 366 : 365;
     
     /** block of functions */
-
     function fillFamilyData() {
 
         /**
-         * set ages and percent of Michael Ages plus summ all percents in one num
+         * set ages and percent of Michael Ages plus summ all percents in one num. and find daysFromYearStart and Leap variant 
          */
         family.forEach(function (val) {
-            var millisecondsOfLife = _.getLifeMilliseconds(new Date(
-                val.born.year, 
-                val.born.month - 1, 
-                val.born.day), data.newDate);            
-            
-            var dateA = new Date(data.zeroDate + millisecondsOfLife.getTime());
+            val.age = data.currentDate.getFullYear() - val.born.year;
+            val.percentOfMichaelAges = val.age / family[0].age; 
 
-            val.age = dateA.getFullYear();
+            data.totalPercentOfAges += val.percentOfMichaelAges;
 
             if(val.name != 'Michael') {
-                val.percentOfMichaelAges = val.age / family[0].age;      
-                data.totalPercentOfAges += val.percentOfMichaelAges;       
-            }
+                var timeDiff = Math.abs(new Date(family[0].born.year, val.born.month - 1, val.born.day).getTime() - data.michaelBornDate.getTime());
+                
+                val.daysFromYearStart = Math.floor( timeDiff / data.oneDay);
+                val.daysFromYearStartLeapYear = val.daysFromYearStart + 1;
+            }                
         });
 
         /**
@@ -57,32 +49,32 @@ $(function () {
          */
         family.forEach(function (val) {             
 
-            if(val.name == 'Michael') {
+            val.daysWithPrecision = data.daysInYear / data.totalPercentOfAges * val.percentOfMichaelAges;
+            val.daysWithoutPrecision = Math.round(val.daysWithPrecision);
 
-                val.daysWithoutPrecision = _.IsLeapYear(yyyy) ? 17 : 16;
-                val.daysWithPrecision =  val.daysWithoutPrecision;
-
+            if(val.name == 'Catharina') {
+                val.daysWithoutPrecision = data.daysInYear - data.totalDaysWithoutCatharina;
             } else {
-
-                val.daysWithPrecision = data.dayInYearWithoutMichael / data.totalPercentOfAges * val.percentOfMichaelAges;
-
-                if (val.name != 'Elia') {
-                    val.daysWithoutPrecision = Math.round(val.daysWithPrecision);
-                    data.totalRoundDays += val.daysWithoutPrecision;                    
-                }                 
+                data.totalDaysWithoutCatharina += val.daysWithoutPrecision;
             }
-            
-        });
 
-        family[1].daysWithoutPrecision = data.dayInYearWithoutMichael - data.totalRoundDays;
+            if(val.name == 'Michael') {
+                val.daysWithoutPrecision += data.currentYearIsLeap ? 1 : 0;
+            }             
+        });
     }     
     
     var calendarReady = false;
 
     function updateTimer() { 
-        var millisecondsOfLife = _.getLifeMilliseconds(new Date(1938, 1, 13), new Date()); 
 
-        var yeear = data.newDate.getMonth() >= 1 && data.newDate.getDate() >= 13 ? data.newDate.getFullYear() : data.newDate.getFullYear() - 1;
+        var currentDate = new Date();
+
+        var currentYearAM = currentDate.getMonth() >= 1 && currentDate.getDate() >= 13 ? currentDate.getFullYear() : currentDate.getFullYear() - 1;
+
+        var millisecondsOfLife = _.getLifeMilliseconds(data.michaelBornDate, currentDate); 
+
+        
 
         var startOfCurrentYEar = new Date(yeear, 1, 13);
         var millisecondsOfLifeFromYearStart = _.getLifeMilliseconds(new Date(1938, 1, 13), startOfCurrentYEar); 
