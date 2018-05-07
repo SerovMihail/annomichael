@@ -25,7 +25,7 @@ $(function () {
 
         var currentYear = undefined;
         
-        if(currentDate.getMonth() >= 1 && currentDate.getDate() >= 13) {
+        if( (currentDate.getMonth() > 1) || (currentDate.getMonth() == 1 && currentDate.getDate() >= 13)  )  {
             currentYear = currentDate.getFullYear();            
         } else {
             currentYear = currentDate.getFullYear() - 1;            
@@ -78,7 +78,7 @@ $(function () {
 
         var currentYear = undefined;
         var currentYearAM = undefined;
-        if(currentDate.getMonth() >= 1 && currentDate.getDate() >= 13) {
+        if((currentDate.getMonth() > 1) || (currentDate.getMonth() == 1 && currentDate.getDate() >= 13) ) {
             currentYear = currentDate.getFullYear();
             currentYearAM =  data.michaelAge.toString();
         } else {
@@ -100,12 +100,12 @@ $(function () {
             alias = dayInMonthAndAliasAndMonthIndex[1],
             monthIndex = dayInMonthAndAliasAndMonthIndex[2];
 
-        var dayInMonthString = dayInMonth.toString()
-        while(dayInMonthString.length < 3){
-            dayInMonthString='0'+dayInMonthString;
+        var dayInMonth = dayInMonth.toString()
+        while(dayInMonth.length < 3){
+            dayInMonth='0'+dayInMonth;
         }
 
-        var dayMonthYear =  currentYearAM + ' ' + monthIndex  + ' '+ dayInMonthString ;
+        var dayMonthYear =  currentYearAM + ' ' + monthIndex  + ' '+ dayInMonth ;
 
         var time = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds() + ' ' + ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"][currentDate.getDay()];
         document.getElementsByClassName('time')[0].innerHTML = time;
@@ -131,20 +131,22 @@ $(function () {
             MESEVL =  MESEV + family[5].daysWithoutPrecision,
             MESEVLC =  MESEVL + family[6].daysWithoutPrecision;
 
+
+            console.log(MES);
         if(currentDay > 0 && currentDay <= M) {
-            return [family[0].daysWithoutPrecision , 'MICHAEL', 1];
+            return [currentDay, 'MICHAEL', 1];
         } else if (currentDay > M && currentDay <= ME) {
-            return [family[1].daysWithoutPrecision , 'ELIA', 2];
+            return [currentDay - M , 'ELIA', 2];
         } else if (currentDay > ME && currentDay <= MES) {
-            return [family[2].daysWithoutPrecision , 'SERGIUS', 3];
+            return [currentDay - ME , 'SERGIUS', 3];
         } else if (currentDay > MES && currentDay <= MESE) {
-            return [family[3].daysWithoutPrecision , 'EGOR', 4];
+            return [currentDay - MES , 'EGOR', 4];
         } else if (currentDay > MESE && currentDay <= MESEV) {
-            return [family[4].daysWithoutPrecision , 'VAN', 5];
+            return [currentDay - MESE , 'VAN', 5];
         } else if (currentDay > MESEV && currentDay <= MESEVL) {
-            return [family[5].daysWithoutPrecision , 'LEXIUS', 6];
+            return [currentDay - MESEV , 'LEXIUS', 6];
         } else if (currentDay > MESEVL && currentDay <= MESEVLC) {
-            return [family[6].daysWithoutPrecision , 'CATHARINA', 7];
+            return [currentDay - MESEVL , 'CATHARINA', 7];
         } else {
             console.log('Mistake in algorithm');
         }

@@ -34,18 +34,14 @@ var calendar = (function () {
                     days = "";
                 }
 
-                if (index + 1 == todayMonth && dayOfYear == todayDay) {
+                if(index + 1 == todayMonth && dayOfYear == todayDay && birthdays.indexOf(dayOfYear - 1) != -1) {
+                    var birthdayPerson = findBirthdayPerson(dayOfYear);
+
+                    days += "<td class='today " + birthdayPerson.name + "-color' title='Сегодня день рождения у " + birthdayPerson.name + "'>" + i + "</td>";
+                } else if (index + 1 == todayMonth && dayOfYear == todayDay) {
                     days += "<td class='today' title='Сегодня'>" + i + "</td>";
                 } else if (birthdays.indexOf(dayOfYear - 1) != -1) {
-                    var birthdayPerson = family.find(function (val) {
-
-                        if (currentYearIsLeap) {
-                            return val.daysFromYearStartLeapYear == dayOfYear - 1;
-                        } else {
-                            return val.daysFromYearStart == dayOfYear - 1;
-                        }
-
-                    });
+                    var birthdayPerson = findBirthdayPerson(dayOfYear);
 
                     days += "<td class='" + birthdayPerson.name + "-color' title='День рождения " + birthdayPerson.name + "'>" + i + "</td>";
                 } else {
@@ -69,6 +65,18 @@ var calendar = (function () {
 
             appendDiv.append(table);
         });
+
+        function findBirthdayPerson(dayOfYear) {
+            return family.find(function (val) {
+
+                if (currentYearIsLeap) {
+                    return val.daysFromYearStartLeapYear == dayOfYear - 1;
+                } else {
+                    return val.daysFromYearStart == dayOfYear - 1;
+                }
+
+            });
+        }
 
         tippy('[title]', {
             trigger: "mouseenter focus",
